@@ -23,11 +23,12 @@ class SecuritiesTest(unittest.TestCase):
 
     def setUp(self):
 
-        self.setUpGetListedSecurities()
+        # self.setUpGetListedSecurities()
         self.setUpGetSecurityInfo()
 
 
-    def setUpGetListedSecurities(self):  # TODO
+    # NOTE disabled as the get_listed_securities() method has been retired
+    def _setUpGetListedSecurities(self):
 
         self.get_listed_securities_data = [
             # just the first ones from the file to test with
@@ -99,7 +100,8 @@ class SecuritiesTest(unittest.TestCase):
         }
 
 
-    def testGetListedSecuritiesMocked(self):
+    # NOTE disabled as the get_listed_securities() method has been retired
+    def _testGetListedSecuritiesMocked(self):
         """
         Unit test for pyasx.data.securities.get_listed_securities()
         Test pulling mock data + verify
@@ -130,7 +132,8 @@ class SecuritiesTest(unittest.TestCase):
                 i += 1
 
 
-    def testGetListedSecuritiesLive(self):
+    # NOTE disabled as the get_listed_securities() method has been retired
+    def _testGetListedSecuritiesLive(self):
         """
         Unit test for pyasx.data.securities.get_listed_securities()
         Simple check of pulling live data

@@ -1,6 +1,8 @@
 
 # TODO
 
+- [ ] Update get_listed_securities() to compensate for ASX's broke file
+
 - [ ] Pull company dividends
     - https://www.asx.com.au/asx/1/company/CBA/dividends
     - https://www.asx.com.au/asx/1/company/CBA/dividends/history?years=5

@@ -28,44 +28,49 @@ def get_listed_securities():
     :raises pyasx.data.LookupError:
     """
 
-    all_listed_securities = []
+    # NOTE the format of the TSV file has changed breaking the following code. There is a bad
+    # character in the file so it would not be a simple fix. Feel free to have a go, the following
+    # code should work if that bad char can be solved.
+    raise NotImplementedError()
 
-    # GET CSV file of ASX codes, as a stream
-    try:
+    # all_listed_securities = []
 
-        response = requests.get(pyasx.config.get('asx_securities_tsv'), stream=True)
-        response.raise_for_status()  # throw exception for bad status codes
+    # # GET CSV file of ASX codes, as a stream
+    # try:
 
-    except requests.exceptions.HTTPError as ex:
+    #     response = requests.get(pyasx.config.get('asx_securities_tsv'), stream=True)
+    #     response.raise_for_status()  # throw exception for bad status codes
 
-        raise pyasx.data.LookupError("Failed to lookup listed securities; %s" % str(ex))
+    # except requests.exceptions.HTTPError as ex:
 
-    # parse the CSV result, piping it to a temp file to make the process more memory efficient
-    with tempfile.NamedTemporaryFile("w+") as temp_stream:
+    #     raise pyasx.data.LookupError("Failed to lookup listed securities; %s" % str(ex))
 
-        # pipe the CSV data to a temp file
-        for block in response.iter_content(1024, True):
-            temp_stream.write(block.decode('unicode_escape'))
+    # # parse the CSV result, piping it to a temp file to make the process more memory efficient
+    # with tempfile.NamedTemporaryFile("w+") as temp_stream:
 
-        # rewind the temp stream and convert it to an iterator for csv.reader below
-        temp_stream.seek(0)
-        temp_iter = iter(temp_stream.readline, '');
+    #     # pipe the CSV data to a temp file
+    #     for block in response.iter_content(1024, True):
+    #         temp_stream.write(block.decode('unicode_escape'))
 
-        # skip the first 5 rows of the CSV as they are header rows
-        for i in range(0, 5):
-            next(temp_iter)
+    #     # rewind the temp stream and convert it to an iterator for csv.reader below
+    #     temp_stream.seek(0)
+    #     temp_iter = iter(temp_stream.readline, '');
 
-        # read the stream back in & parse out the company details from each row
-        for row in csv.reader(temp_iter, dialect="excel-tab"):
+    #     # skip the first 5 rows of the CSV as they are header rows
+    #     for i in range(0, 5):
+    #         next(temp_iter)
 
-            ticker, name, type, isin = row
+    #     # read the stream back in & parse out the company details from each row
+    #     for row in csv.reader(temp_iter, dialect="excel-tab"):
 
-            all_listed_securities.append({
-                'ticker': ticker,
-                'name': name,
-                'type': type,
-                'isin': isin
-            })
+    #         ticker, name, type, isin = row
+
+    #         all_listed_securities.append({
+    #             'ticker': ticker,
+    #             'name': name,
+    #             'type': type,
+    #             'isin': isin
+    #         })
 
     return all_listed_securities
 

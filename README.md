@@ -191,9 +191,11 @@ _NOTE_ This currently only pulls the 20 latest _market sensitive_ annoucements.
         ...
     ]
 
-### get_listed_securities()
+### ~~get_listed_securities()~~
 
-Pulls a list of all securities listed on the ASX.
+**NOTE This has been disabled due to a breaking change on ASX.com.au**
+
+~~Pulls a list of all securities listed on the ASX.~~
 
 **Example**
 
@@ -281,6 +283,10 @@ The unit tests can be run by executing the test.py file, like so;
 
 
 ## Changelog
+
+### 2.2
+
+- Disable pyasx.data.get_listed_securities() due to breaking change on ASX.com.au
 
 ### 2.1.7
 
