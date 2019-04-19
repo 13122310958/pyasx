@@ -286,7 +286,9 @@ The unit tests can be run by executing the test.py file, like so;
 
 ### 2.2
 
-- Disable pyasx.data.get_listed_securities() due to breaking change on ASX.com.au
+- Disable pyasx.data.securities.get_listed_securities() due to breaking change on ASX.com.au
+- Fix bug in unit test for pyasx.data.securities.get_security_info()
+- 
 
 ### 2.1.7
 
